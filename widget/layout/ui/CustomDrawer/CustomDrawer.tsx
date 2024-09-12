@@ -8,12 +8,12 @@ import { Colors } from "../../../../shared/tokens";
 import { CustomLink } from "../../../../shared/customLink/CustomLink";
 import { CloseDrawer } from "../../../../features/layout/ui/CloseDrawer/CloseDrawer";
 import { useAtom, useSetAtom } from "jotai";
-import { logoutAtom } from "../../../auth/model/auth.state";
-import { loadProfileAtom } from "../../../user/model/user.state";
-import { UserMenu } from "../../../user/ui/UserMenu/UserMenu";
+import { logoutAtom } from "../../../../entities/auth/model/auth.state";
+import { loadProfileAtom } from "../../../../entities/user/model/user.state";
+import { UserMenu } from "../../../../entities/user/ui/UserMenu/UserMenu";
 import CoursesIcon from "../../../../assets/menu/courses";
 import ProfileIcon from "../../../../assets/menu/profile";
-import MenuItem from "../MenuItem/MenuItem";
+import MenuItem from "../../../../entities/layout/ui/MenuItem/MenuItem";
 
 const MENU = [
   { text: "Курсы", icon: <CoursesIcon />, path: "index" },
@@ -27,7 +27,7 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
   useEffect(() => {
     loadProfile();
   }, []);
-   
+
   return (
     <DrawerContentScrollView
       {...props}
@@ -36,8 +36,8 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
       <View style={styles.content}>
         <CloseDrawer {...props.navigation} />
         <UserMenu user={profile.profile} />
-        {MENU.map(menu => (
-          <MenuItem key={menu.path} {...menu} drawer={props}/>
+        {MENU.map((menu) => (
+          <MenuItem key={menu.path} {...menu} drawer={props} />
         ))}
       </View>
       <View style={styles.footer}>
