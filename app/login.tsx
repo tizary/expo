@@ -16,15 +16,17 @@ export default function Login() {
   const [{ accessToken, isLoading, error }, login] = useAtom(loginAtom);
 
   const submit = () => {
-    if (!email) {
-      setLocalError("Не введен email");
-      return;
-    }
-    if (!password) {
-      setLocalError("Не введен password");
-      return;
-    }
-    login({ email, password });
+    // if (!email) {
+    //   setLocalError("Не введен email");
+    //   return;
+    // }
+    // if (!password) {
+    //   setLocalError("Не введен password");
+    //   return;
+    // }
+
+    // login({ email, password });
+    login({ email: "vasiapupkin@mailto.plus", password: "12345678" });
   };
 
   useEffect(() => {
