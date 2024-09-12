@@ -32,11 +32,12 @@ export default function AppLayout() {
           },
           headerTitleAlign: "center",
           sceneContainerStyle: {
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.black, 
           },
         })}
       >
         <Drawer.Screen name="index" options={{ title: "Мои курсы" }} />
+        <Drawer.Screen name="profile" options={{ title: "Профиль" }} />
       </Drawer>
     </GestureHandlerRootView>
   );

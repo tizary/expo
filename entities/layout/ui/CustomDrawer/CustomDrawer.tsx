@@ -11,6 +11,14 @@ import { useAtom, useSetAtom } from "jotai";
 import { logoutAtom } from "../../../auth/model/auth.state";
 import { loadProfileAtom } from "../../../user/model/user.state";
 import { UserMenu } from "../../../user/ui/UserMenu/UserMenu";
+import CoursesIcon from "../../../../assets/menu/courses";
+import ProfileIcon from "../../../../assets/menu/profile";
+import MenuItem from "../MenuItem/MenuItem";
+
+const MENU = [
+  { text: "Курсы", icon: <CoursesIcon />, path: "index" },
+  { text: "Профиль", icon: <ProfileIcon />, path: "profile" },
+];
 
 export function CustomDrawer(props: DrawerContentComponentProps) {
   const logout = useSetAtom(logoutAtom);
@@ -28,6 +36,9 @@ export function CustomDrawer(props: DrawerContentComponentProps) {
       <View style={styles.content}>
         <CloseDrawer {...props.navigation} />
         <UserMenu user={profile.profile} />
+        {MENU.map(menu => (
+          <MenuItem key={menu.path} {...menu} drawer={props}/>
+        ))}
       </View>
       <View style={styles.footer}>
         <CustomLink text="Выход" href={"/login"} onPress={() => logout()} />

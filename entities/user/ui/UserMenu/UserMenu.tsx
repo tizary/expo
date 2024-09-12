@@ -11,25 +11,28 @@ export function UserMenu({ user }: { user: User | null }) {
       ) : (
         <Image source={require("../../../../assets/images/avatar.png")} />
       )}
-      <Text style={styles.name}>{user.name}</Text>
+      <Text style={styles.name}>
+        {user.name} {user.surname}
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
     gap: Gaps.g8,
     marginTop: 30,
+    marginBottom: 30
   },
   image: {
-    width: 60,
-    height: 60,
-    borderRadius: 30
+    width: 70,
+    height: 70,
+    borderRadius: 35,
   },
   name: {
-    fontSize:  Fonts.f16,
+    fontSize: Fonts.f16,
     fontFamily: Fonts.regular,
-    color: Colors.white
+    color: Colors.white,
   },
 });
