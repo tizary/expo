@@ -1,24 +1,16 @@
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, } from "react-native";
 import React, { useState } from "react";
 import ImageUploader from "../../shared/ImageUploader/ImageUploader";
 import { Gaps } from "../../shared/tokens";
+import { Avatar } from "../../entities/user/ui/Avatar/Avatar";
 
 export default function Profile() {
   const [image, setImage] = useState<string | null>(null);
 
   return (
     <View style={styles.container}>
-      {image ? (
-        <Image
-          style={styles.image}
-          source={{
-            uri: image,
-          }}
-        />
-      ) : (
-        <Image source={require("../../assets/images/avatar.png")} />
-      )}
-      <ImageUploader onUpload={setImage} />
+     <Avatar image={image} />
+      <ImageUploader onUpload={setImage} onError={(e) => console.log(e)} />
     </View>
   );
 }
